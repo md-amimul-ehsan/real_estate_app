@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/views/utilities/constants.dart';
+import 'package:real_estate_app/views/components/radio_button.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -10,28 +11,44 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: kAccentColor,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Center(
-              child: Text(
-                'Hello, Stranger.',
-                style: kTitleTextStyle,
-              ),
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+    return Scaffold(
+      backgroundColor: kPrimaryAccentColor,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SizedBox(
+            height: screenHeight * 0.4,
+          ),
+          Text(
+            'Hello, Stranger.',
+            style: kTitleTextStyle,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: screenHeight * 0.025,
+          ),
+          Text(
+            'Please tell us how you want to register',
+            style: kSubtitleTextStyle,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: screenHeight * 0.05,
+          ),
+          RadioButton(),
+          SizedBox(
+            height: screenHeight * 0.1,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+              left: screenWidth * 0.1,
+              right: screenWidth * 0.1,
             ),
-            Text(
-              'Please tell us how you want to register',
-            ),
-            TextButton(
+            child: TextButton(
               onPressed: () {},
               style: ButtonStyle(
-                minimumSize: MaterialStateProperty.all(
-                  Size(MediaQuery.of(context).size.width * 0.8, 50),
-                ),
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
@@ -46,9 +63,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   color: Colors.white,
                 ),
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
