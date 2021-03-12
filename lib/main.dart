@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:real_estate_app/views/properties/properties_recycler.dart';
 
 void main() => runApp(const RealEstateApp());
 
@@ -30,11 +31,8 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+  static List<Widget> _widgetOptions = <Widget>[
+    PropertiesRecycler(), //For testing purposes
     Text(
       'Index 1: Business',
       style: optionStyle,
