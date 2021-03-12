@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:real_estate_app/views/properties/properties_main_screen.dart';
 import 'package:real_estate_app/views/properties/properties_recycler.dart';
 
 void main() => runApp(const RealEstateApp());
@@ -32,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
-    PropertiesRecycler(), //For testing purposes
+    PropertiesScreen(), //For testing purposes
     Text(
       'Index 1: Business',
       style: optionStyle,
@@ -56,9 +57,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Real Estate App'),
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
