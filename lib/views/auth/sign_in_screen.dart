@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:real_estate_app/views/components/rounded_rectangle_border_button.dart';
 import 'package:real_estate_app/views/utilities/constants.dart';
-import 'package:real_estate_app/views/components/radio_button.dart';
+import 'package:real_estate_app/views/components/input_text_field.dart';
+import 'package:real_estate_app/views/components/password_text_field.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -15,57 +16,43 @@ class _SignInScreenState extends State<SignInScreen> {
     final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: kPrimaryAccentColor,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          SizedBox(
-            height: screenHeight * 0.4,
-          ),
-          Text(
-            'Hello, Stranger.',
-            style: kTitleTextStyle,
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(
-            height: screenHeight * 0.025,
-          ),
-          Text(
-            'Please tell us how you want to register',
-            style: kSubtitleTextStyle,
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(
-            height: screenHeight * 0.05,
-          ),
-          RadioButton(),
-          SizedBox(
-            height: screenHeight * 0.1,
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: screenWidth * 0.1,
-              right: screenWidth * 0.1,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(
+              height: screenHeight * 0.2,
             ),
-            child: TextButton(
+            Text(
+              'Sign In',
+              textAlign: TextAlign.center,
+              style: kTitleTextStyle,
+            ),
+            SizedBox(
+              height: screenHeight * 0.15,
+            ),
+            InputTextField(
+              textInputType: TextInputType.emailAddress,
+              title: 'Email',
+              prefixIcon: Icon(
+                Icons.mail,
+                color: kSecondaryAccentColor,
+              ),
+            ),
+            PasswordTextField(
+              title: 'Password',
+            ),
+            SizedBox(
+              height: screenHeight * 0.1,
+            ),
+            RoundedRectangleBorderButton(
               onPressed: () {},
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                  ),
-                ),
-                backgroundColor: MaterialStateProperty.resolveWith(
-                    (states) => kButtonBackgroundColor),
-              ),
-              child: Text(
-                'Continue',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
+              screenWidth: screenWidth,
+              title: 'Sign In',
+              width: screenWidth * 0.3,
             ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }
