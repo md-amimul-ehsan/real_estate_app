@@ -21,7 +21,6 @@ class InputTextField extends StatefulWidget {
 
 class _InputTextFieldState extends State<InputTextField> {
   final textController = TextEditingController();
-  bool isPasswordVisible = false;
 
   @override
   void initState() {

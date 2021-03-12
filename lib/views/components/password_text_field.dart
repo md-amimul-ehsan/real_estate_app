@@ -35,7 +35,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         bottom: 10.0,
       ),
       child: TextField(
-        obscureText: isPasswordVisible,
+        obscureText: !isPasswordVisible,
         controller: textController,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
