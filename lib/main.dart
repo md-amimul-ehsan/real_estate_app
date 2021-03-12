@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/views/properties/properties_main_screen.dart';
-import 'package:real_estate_app/views/properties/properties_recycler.dart';
+import 'package:real_estate_app/views/auth/screens/sign_up_screen.dart';
 
-void main() => runApp(const RealEstateApp());
+void main() => runApp(RealEstateApp());
 
 /// This is the main application widget.
 class RealEstateApp extends StatelessWidget {
-  const RealEstateApp({Key key}) : super(key: key);
+  RealEstateApp({Key key}) : super(key: key);
 
   static const String _title = 'Flutter Code Sample';
+  final bool login = true;
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: _title,
-      home: MainScreen(),
+      home: login ? SignUpScreen() : MainScreen(),
     );
   }
 }
