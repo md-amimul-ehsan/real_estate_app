@@ -25,7 +25,7 @@ Widget propertiesListItem(
       child: Stack(
         children: [
           Opacity(
-            opacity: 0.4,
+            opacity: 0.5,
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
