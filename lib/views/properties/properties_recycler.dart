@@ -17,14 +17,16 @@ class _PropertiesRecyclerState extends State<PropertiesRecycler> {
       child: FutureBuilder(
         future: getAllProperties(),
         builder: (BuildContext context, AsyncSnapshot<List<Property>> snapshot) {
-          print(snapshot);
-          return ListView.builder(
+          return snapshot.data != null ?
+          ListView.builder(
               scrollDirection: Axis.vertical,
               itemCount: snapshot.data.length,
               //Replace with actual number of properties in fetched data
               itemBuilder: (context, i) {
                 return propertiesListItem(snapshot.data[i]); //Pass index i of snapshot data (list of Property objects)
-              });
+              }
+          ) :
+          Text("No property found"); //Replace with spinner
         },
       ),
     );
