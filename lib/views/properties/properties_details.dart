@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/components/icon_text_vertical.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:video_player/video_player.dart';
@@ -85,12 +86,12 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                   ),
                   IconButton(
                     icon: Icon(Icons.phone),
-                    color: Colors.orange,
+                    color: kPrimaryAccentColor,
                     onPressed: () {},
                   ),
                   IconButton(
                     icon: Icon(Icons.email),
-                    color: Colors.orange,
+                    color: kPrimaryAccentColor,
                     onPressed: () {},
                   ),
                 ],
@@ -103,27 +104,27 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                 children: [
                   IconTextVertical(
                     icon: Icons.king_bed_outlined,
-                    color: Colors.orange,
+                    color: kPrimaryAccentColor,
                     text: "Bedrooms",
                   ),
                   IconTextVertical(
                     icon: Icons.bathtub_outlined,
-                    color: Colors.orange,
+                    color: kPrimaryAccentColor,
                     text: "Bathrooms",
                   ),
                   IconTextVertical(
                     icon: Icons.kitchen_outlined,
-                    color: Colors.orange,
+                    color: kPrimaryAccentColor,
                     text: "Kitchens",
                   ),
                   IconTextVertical(
                     icon: Icons.pool_outlined,
-                    color: Colors.orange,
+                    color: kPrimaryAccentColor,
                     text: "Pools",
                   ),
                   IconTextVertical(
                     icon: Icons.local_parking,
-                    color: Colors.orange,
+                    color: kPrimaryAccentColor,
                     text: "Parking",
                   ),
                 ],
@@ -204,7 +205,7 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                     : Container(),
               ),
               IconButton(
-                icon: _controller.value.isPlaying ? Icon(Icons.pause) : Icon(Icons.play_arrow),
+                icon: _controller.value.isPlaying ? Icon(Icons.pause, color: kPrimaryAccentColor) : Icon(Icons.play_arrow, color: kPrimaryAccentColor),
                 onPressed: () {
                   setState(() {
                     _controller.value.isPlaying ? _controller.pause() : _controller.play();
