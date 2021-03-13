@@ -4,31 +4,28 @@ import 'package:real_estate_app/models/property.dart';
 import 'package:real_estate_app/views/properties/properties_list_item.dart';
 
 class PropertiesRecycler extends StatefulWidget {
+  PropertiesRecycler({Key key, @required this.propertyList}) : super(key: key);
+
+  List<Property> propertyList;
+
   @override
   _PropertiesRecyclerState createState() => _PropertiesRecyclerState();
 }
 
 class _PropertiesRecyclerState extends State<PropertiesRecycler> {
-
   @override
   Widget build(BuildContext context) {
+    List<Property> propertyList = widget.propertyList;
     return Expanded(
-      child: FutureBuilder(
-        future: getAllProperties(),
-        builder: (BuildContext context, AsyncSnapshot<List<Property>> snapshot) {
-          return snapshot.data != null ?
-          ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: snapshot.data.length,
-              //Replace with actual number of properties in fetched data
-              itemBuilder: (context, i) {
-                return propertiesListItem(snapshot.data[i]); //Pass index i of snapshot data (list of Property objects)
-              }
-          ) :
-          Text("No property found"); //Replace with spinner
-        },
-      ),
+        child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemCount: propertyList.length,
+            //Replace with actual number of properties in fetched data
+            itemBuilder: (context, i) {
+              return propertiesListItem(propertyList[
+                  i]); //Pass index i of snapshot data (list of Property objects)
+            },
+        )
     );
   }
 }
-
