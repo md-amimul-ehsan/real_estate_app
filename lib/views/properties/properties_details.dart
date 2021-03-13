@@ -1,8 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/views/components/icon_text_vertical.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:video_player/video_player.dart';
 
-class PropertiesDetails extends StatelessWidget {
+class PropertiesDetails extends StatefulWidget {
+  @override
+  _PropertiesDetailsState createState() => _PropertiesDetailsState();
+}
+
+class _PropertiesDetailsState extends State<PropertiesDetails> {
+  VideoPlayerController _controller;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller = VideoPlayerController.network(
+        'https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
+    _controller.addListener(() {
+      setState(() {});
+    });
+    _controller.setLooping(true);
+    _controller..initialize().then((_) => setState(() {}));
+    _controller.play();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SlidingUpPanel(
@@ -156,6 +185,31 @@ class PropertiesDetails extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                "Video",
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Center(
+                child: _controller.value.isInitialized
+                    ? AspectRatio(
+                  aspectRatio: _controller.value.aspectRatio,
+                  child: VideoPlayer(_controller),
+                )
+                    : Container(),
+              ),
+              IconButton(
+                icon: _controller.value.isPlaying ? Icon(Icons.pause) : Icon(Icons.play_arrow),
+                onPressed: () {
+                  setState(() {
+                    _controller.value.isPlaying ? _controller.pause() : _controller.play();
+                  });
+                },
               ),
             ],
           ),
