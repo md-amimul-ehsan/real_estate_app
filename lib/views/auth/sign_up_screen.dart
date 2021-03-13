@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:real_estate_app/views/components/rounded_rectangle_border_button.dart';
 import 'package:real_estate_app/views/utilities/constants.dart';
 import 'package:real_estate_app/views/components/input_text_field.dart';
 import 'package:real_estate_app/views/components/password_text_field.dart';
@@ -48,6 +49,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             PasswordTextField(
               title: 'Password',
+            ),
+            SizedBox(
+              height: screenHeight * 0.1,
+            ),
+            RoundedRectangleBorderButton(
+              onPressed: () {},
+              screenWidth: screenWidth,
+              title: 'Sign Up',
+              width: screenWidth * 0.3,
             ),
           ],
         ),
