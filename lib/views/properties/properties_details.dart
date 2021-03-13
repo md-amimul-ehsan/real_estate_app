@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/views/components/icon_text_vertical.dart';
-import 'package:real_estate_app/views/components/photo_gallery.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class PropertiesDetails extends StatelessWidget {
@@ -15,10 +14,10 @@ class PropertiesDetails extends StatelessWidget {
         bottom: Radius.zero,
       ),
       body: Image(
-          image: NetworkImage(
-            "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg",
-          ),
-          fit: BoxFit.fill,
+        image: NetworkImage(
+          "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg",
+        ),
+        fit: BoxFit.fill,
       ),
       header: Center(
         child: Divider(
@@ -48,10 +47,10 @@ class PropertiesDetails extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                          "Agent name",
+                        "Agent name",
                       ),
                       Text(
-                          "Agent description",
+                        "Agent description",
                       ),
                     ],
                   ),
@@ -118,7 +117,46 @@ class PropertiesDetails extends StatelessWidget {
               Text(
                 "Photos",
               ),
-              PhotoGallery(photos: ["https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg", "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg", "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg", "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg", "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg", "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg", "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg", "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg"], numCols: 3,)
+              GridView.count(
+                crossAxisCount: 3,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                shrinkWrap: true,
+                children: [
+                  Container(
+                    height: 100,
+                    width: 100,
+                    child: Image.network(
+                      "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg",
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    child: Image.network(
+                      "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg",
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    child: Image.network(
+                      "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg",
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    child: Image.network(
+                      "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg",
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
