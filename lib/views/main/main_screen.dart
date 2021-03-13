@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:real_estate_app/views/properties/properties_details.dart';
 import 'package:real_estate_app/views/properties/properties_main_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -14,10 +15,7 @@ class _MainScreenState extends State<MainScreen> {
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     PropertiesScreen(), //For testing purposes
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
+    PropertiesDetails(),
     Text(
       'Index 2: School',
       style: optionStyle,
