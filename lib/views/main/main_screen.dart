@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/utilities/constants.dart';
+import 'package:real_estate_app/views/agents/agents_main_screen.dart';
 import 'package:real_estate_app/views/properties/properties_details.dart';
 import 'package:real_estate_app/views/properties/properties_main_screen.dart';
 
@@ -13,14 +14,11 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     PropertiesScreen(), //For testing purposes
     PropertiesDetails(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    AgentsScreen(),
     Text(
       'Index 3: Settings',
       style: optionStyle,
