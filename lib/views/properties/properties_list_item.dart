@@ -25,7 +25,7 @@ Widget propertiesListItem(
       child: Stack(
         children: [
           Opacity(
-            opacity: 0.4,
+            opacity: 0.5,
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
@@ -67,12 +67,12 @@ Widget propertiesListItem(
                 ),
                 child: Row(
                   children: [
-                    IconText(
+                    IconTextHorizontal(
                       title: 'Los Angeles',
                       icon: Icons.location_on_outlined,
                     ),
                     Spacer(),
-                    IconText(
+                    IconTextHorizontal(
                       title: '4.4 Reviews',
                       icon: Icons.star_rate,
                       iconColor: Color(0xFFFDC125),
