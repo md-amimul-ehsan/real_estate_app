@@ -17,11 +17,11 @@ class _MainScreenState extends State<MainScreen> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     PropertiesScreen(),
-    AgentsScreen(),
     Text(
-      'Index 2: Business',
+      'Index 1: Open houses',
       style: optionStyle,
     ),
+    AgentsScreen(),
     AgentsDetails(),
   ];
 
