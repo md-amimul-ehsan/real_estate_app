@@ -14,6 +14,11 @@ const kSubtitleTextStyle = TextStyle(
 const kWhiteTextStyle = TextStyle(
   color: Colors.white,
 );
+const kCardLargeTextStyle = TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+  fontSize: 25,
+);
 const kButtonBackgroundColor = Color(0xFF69AFA3);
-
+const kMainScreenPadding = 20.0;
 const baseURL = "https://real-estate-ar-app.herokuapp.com/";
