@@ -10,7 +10,6 @@ class PropertiesRecycler extends StatefulWidget {
 
 class _PropertiesRecyclerState extends State<PropertiesRecycler> {
 
-  Future<List<Property>> futureProperty;
   @override
   Widget build(BuildContext context) {
     return Expanded(
