@@ -22,8 +22,7 @@ class _PropertiesRecyclerState extends State<PropertiesRecycler> {
             itemCount: propertyList.length,
             //Replace with actual number of properties in fetched data
             itemBuilder: (context, i) {
-              return propertiesListItem(propertyList[
-                  i]); //Pass index i of snapshot data (list of Property objects)
+              return PropertiesListItem(property: propertyList[i]); //Pass index i of snapshot data (list of Property objects)
             },
         )
     );
