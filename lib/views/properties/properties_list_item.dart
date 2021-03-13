@@ -67,12 +67,12 @@ Widget propertiesListItem(
                 ),
                 child: Row(
                   children: [
-                    IconText(
+                    IconTextHorizontal(
                       title: 'Los Angeles',
                       icon: Icons.location_on_outlined,
                     ),
                     Spacer(),
-                    IconText(
+                    IconTextHorizontal(
                       title: '4.4 Reviews',
                       icon: Icons.star_rate,
                       iconColor: Color(0xFFFDC125),

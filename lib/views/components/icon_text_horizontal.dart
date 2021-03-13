@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/utilities/constants.dart';
 
-class IconText extends StatelessWidget {
-  const IconText({
+class IconTextHorizontal extends StatelessWidget {
+  const IconTextHorizontal({
     Key key,
     @required this.title,
     @required this.icon,
