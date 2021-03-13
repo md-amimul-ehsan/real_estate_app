@@ -15,3 +15,5 @@ const kWhiteTextStyle = TextStyle(
   color: Colors.white,
 );
 const kButtonBackgroundColor = Color(0xFF69AFA3);
+
+const baseURL = "https://real-estate-ar-app.herokuapp.com/";

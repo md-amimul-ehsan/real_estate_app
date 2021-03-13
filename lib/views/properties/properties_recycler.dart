@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:real_estate_app/controllers/properties.dart';
+import 'package:real_estate_app/models/property.dart';
+import 'package:real_estate_app/views/properties/properties_list_item.dart';
 
 class PropertiesRecycler extends StatefulWidget {
   @override
@@ -6,43 +9,25 @@ class PropertiesRecycler extends StatefulWidget {
 }
 
 class _PropertiesRecyclerState extends State<PropertiesRecycler> {
+
+  Future<void> futureProperty;
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView.builder(
-          scrollDirection: Axis.vertical,
-          itemCount: 10, //Replace with actual number of properties in fetched data
-          itemBuilder: (context, i) {
-            return propertiesAdapter(); //Pass index i of snapshot data (list of Property objects)
-          }),
+      child: FutureBuilder(
+        future: getAllProperties(),
+        builder: (BuildContext context, AsyncSnapshot<List<Property>> snapshot) {
+          print(snapshot);
+          return ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: snapshot.data.length,
+              //Replace with actual number of properties in fetched data
+              itemBuilder: (context, i) {
+                return propertiesListItem(snapshot.data[i]); //Pass index i of snapshot data (list of Property objects)
+              });
+        },
+      ),
     );
   }
-}
-
-Widget propertiesAdapter() //Include Property object as parameter
-{
-  return Card(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10))
-    ),
-    elevation: 5,
-    child: ListTile(
-      leading: Image(
-        image: NetworkImage("https://www.realestatebd.com/images/pic8.jpg"), //Replace with actual image URL
-      ),
-      title: Text('Title'), //Replace with actual property name
-      subtitle: Text('Subtitle'), //Replace with actual property description
-      onLongPress: () {
-        print('Long Pressed'); //Think of something to do here
-      },
-      onTap: () {
-        print('Tapped'); //Take user to property_details screen
-      },
-      trailing: Icon(
-        Icons.arrow_right,
-        color: Colors.greenAccent,
-      ),
-    ),
-  );
 }
 
