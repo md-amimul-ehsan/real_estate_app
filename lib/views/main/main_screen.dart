@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/agents/agents_main_screen.dart';
+import 'package:real_estate_app/views/agents/agents_details.dart';
 import 'package:real_estate_app/views/properties/properties_main_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -21,10 +22,7 @@ class _MainScreenState extends State<MainScreen> {
       'Index 2: Business',
       style: optionStyle,
     ),
-    Text(
-      'Index 3: Settings',
-      style: optionStyle,
-    ),
+    AgentsDetails(),
   ];
 
   void _onItemTapped(int index) {
@@ -42,23 +40,23 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: kPrimaryAccentColor,
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Business',
+            label: 'Properties',
             backgroundColor: kPrimaryAccentColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.home),
+            label: 'Open Houses',
             backgroundColor: kPrimaryAccentColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.person),
+            label: 'Agents',
+            backgroundColor: kPrimaryAccentColor,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.directions_walk),
+            label: 'Inside Walkthrough',
             backgroundColor: kPrimaryAccentColor,
           ),
         ],
