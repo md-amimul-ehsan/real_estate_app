@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/utilities/constants.dart';
+import 'package:real_estate_app/views/components/icon_text_horizontal.dart';
 import 'package:real_estate_app/views/components/icon_text_vertical.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:video_player/video_player.dart';
@@ -37,22 +38,80 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
   Widget build(BuildContext context) {
     return SlidingUpPanel(
       parallaxEnabled: true,
-      parallaxOffset: 0.7,
+      parallaxOffset: 1,
       boxShadow: [BoxShadow(blurRadius: 0)],
       borderRadius: BorderRadius.vertical(
         top: Radius.circular(30),
         bottom: Radius.zero,
       ),
-      body: Image(
-        image: NetworkImage(
-          "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg",
-        ),
-        fit: BoxFit.fill,
-      ),
-      header: Center(
-        child: Divider(
-          height: 100,
+      body: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
           color: Colors.black,
+        ),
+        child: Stack(
+          children: [
+            Opacity(
+              opacity: 0.5,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        "https://www.realestatebd.com/images/pic8.jpg"),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
+            Column(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height - 250,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: kMainScreenPadding,
+                    right: kMainScreenPadding,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Clinton Villa",
+                        style: kCardLargeTextStyle,
+                      ),
+                      Text(
+                        "\$3,500.00",
+                        style: kCardLargeTextStyle,
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: kMainScreenPadding,
+                    right: kMainScreenPadding,
+                    bottom: 15.0,
+                  ),
+                  child: Row(
+                    children: [
+                      IconText(
+                        title: 'Los Angeles',
+                        icon: Icons.location_on_outlined,
+                      ),
+                      Spacer(),
+                      IconText(
+                        title: '4.4 Reviews',
+                        icon: Icons.star_rate,
+                        iconColor: Color(0xFFFDC125),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
       panelBuilder: (scrollController) => SingleChildScrollView(
@@ -199,16 +258,20 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
               Center(
                 child: _controller.value.isInitialized
                     ? AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(_controller),
-                )
+                        aspectRatio: _controller.value.aspectRatio,
+                        child: VideoPlayer(_controller),
+                      )
                     : Container(),
               ),
               IconButton(
-                icon: _controller.value.isPlaying ? Icon(Icons.pause, color: kPrimaryAccentColor) : Icon(Icons.play_arrow, color: kPrimaryAccentColor),
+                icon: _controller.value.isPlaying
+                    ? Icon(Icons.pause, color: kPrimaryAccentColor)
+                    : Icon(Icons.play_arrow, color: kPrimaryAccentColor),
                 onPressed: () {
                   setState(() {
-                    _controller.value.isPlaying ? _controller.pause() : _controller.play();
+                    _controller.value.isPlaying
+                        ? _controller.pause()
+                        : _controller.play();
                   });
                 },
               ),
