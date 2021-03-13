@@ -15,13 +15,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kPrimaryAccentColor,
+        elevation: 0,
+      ),
       backgroundColor: kPrimaryAccentColor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
-              height: screenHeight * 0.2,
+              height: screenHeight * 0.1,
             ),
             Text(
               'Sign up',
