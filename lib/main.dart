@@ -8,7 +8,7 @@ class RealEstateApp extends StatelessWidget {
   RealEstateApp({Key key}) : super(key: key);
 
   static const String _title = 'Flutter Code Sample';
-  final bool login = true;
+  final bool login = false;
 
   @override
   Widget build(BuildContext context) {
