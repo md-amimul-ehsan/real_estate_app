@@ -50,13 +50,13 @@ class _MainScreenState extends State<MainScreen> {
             backgroundColor: kPrimaryAccentColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.people),
             label: 'Agents',
             backgroundColor: kPrimaryAccentColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.directions_walk),
-            label: 'Inside Walkthrough',
+            icon: Icon(Icons.person),
+            label: 'Profile',
             backgroundColor: kPrimaryAccentColor,
           ),
         ],
