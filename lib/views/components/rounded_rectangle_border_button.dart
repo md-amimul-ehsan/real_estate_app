@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate_app/views/utilities/constants.dart';
+import 'package:real_estate_app/utilities/constants.dart';
 
 class RoundedRectangleBorderButton extends StatelessWidget {
   const RoundedRectangleBorderButton({

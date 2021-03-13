@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:real_estate_app/views/utilities/constants.dart';
+import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/components/radio_button.dart';
 import 'package:real_estate_app/views/components/rounded_rectangle_border_button.dart';
 import 'sign_up_screen.dart';

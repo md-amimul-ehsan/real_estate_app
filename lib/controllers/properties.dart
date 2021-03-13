@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:real_estate_app/models/property.dart';
-import 'package:real_estate_app/views/utilities/constants.dart';
+import 'package:real_estate_app/utilities/constants.dart';
 
 const baseURLProp = baseURL + "props/";
 
