@@ -26,14 +26,17 @@ class TitleTextColumn extends StatelessWidget {
             title,
             style: TextStyle(
               color: Colors.grey,
-              fontSize: 20,
+              fontSize: 18,
             ),
+          ),
+          SizedBox(
+            height: 10,
           ),
           Text(
             text,
             style: TextStyle(
               color: textColor,
-              fontSize: 20,
+              fontSize: 15,
             ),
           ),
         ],
