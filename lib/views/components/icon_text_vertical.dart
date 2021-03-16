@@ -21,12 +21,12 @@ class IconTextVertical extends StatelessWidget {
     return Column(
       children: [
         Icon(icon, color: iconColor),
-        Text(
+        titleText.isNotEmpty ? Text(
           titleText,
           style: TextStyle(
             color: Colors.grey,
           ),
-        ),
+        ) : Container(),
         Text(
           text,
           style: TextStyle(
