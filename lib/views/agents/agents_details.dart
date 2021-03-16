@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/models/agent.dart';
 import 'package:real_estate_app/utilities/constants.dart';
+import 'package:real_estate_app/views/components/title_text_column.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 const agentsImageProportion = 0.4;
@@ -130,46 +131,6 @@ class _AgentsDetailsState extends State<AgentsDetails> {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class TitleTextColumn extends StatelessWidget {
-  const TitleTextColumn({
-    Key key,
-    @required this.title,
-    @required this.text,
-  }) : super(key: key);
-
-  final String title;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 10.0,
-        top: 20.0,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 20,
-            ),
-          ),
-          Text(
-            text,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-            ),
-          ),
-        ],
       ),
     );
   }
