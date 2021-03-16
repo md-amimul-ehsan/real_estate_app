@@ -21,6 +21,8 @@ class Property {
     this.name,
     this.zip,
     this.type,
+    this.location,
+    this.price,
   });
 
   String description;
@@ -34,6 +36,8 @@ class Property {
   String name;
   String zip;
   String type;
+  String location;
+  int price;
 
   factory Property.fromJson(Map<String, dynamic> json) => Property(
     description: json["description"],
@@ -47,6 +51,8 @@ class Property {
     name: json["name"],
     zip: json["zip"],
     type: json["type"],
+    location: json["location"],
+    price: json["price"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -61,5 +67,7 @@ class Property {
     "name": name,
     "zip": zip,
     "type": type,
+    "location": location,
+    "price": price,
   };
 }
