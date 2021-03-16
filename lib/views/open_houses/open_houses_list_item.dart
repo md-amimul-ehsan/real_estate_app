@@ -90,10 +90,24 @@ class _OpenHousesListItemState extends State<OpenHousesListItem> {
                         icon: Icons.location_on_outlined,
                       ),
                       Spacer(),
-                      IconTextHorizontal(
-                        title: '4.4 Reviews',
-                        icon: Icons.star_rate,
-                        iconColor: Color(0xFFFDC125),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 5.0,
+                            vertical: 3,
+                          ),
+                          child: Text(
+                            'CLOSED',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
