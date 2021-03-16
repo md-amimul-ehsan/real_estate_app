@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/models/openhouse.dart';
+import 'package:real_estate_app/utilities/common_functions.dart';
 import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/open_houses/open_houses_details.dart';
 import 'package:real_estate_app/views/components/icon_text_horizontal.dart';
@@ -60,8 +61,19 @@ class _OpenHousesListItemState extends State<OpenHousesListItem> {
               ),
             ),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Spacer(),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: kMainScreenPadding,
+                    right: kMainScreenPadding,
+                  ),
+                  child: Text(
+                      timestampToNeatTime(openhouse.date.toString()),
+                      style: kCardLargeTextStyle,
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(
                     left: kMainScreenPadding,
