@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/agents/agents_main_screen.dart';
 import 'package:real_estate_app/views/agents/agents_details.dart';
+import 'package:real_estate_app/views/open_houses/open_houses_main_screen.dart';
 import 'package:real_estate_app/views/properties/properties_main_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -17,12 +18,12 @@ class _MainScreenState extends State<MainScreen> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     PropertiesScreen(),
+    OpenHousesScreen(),
+    AgentsScreen(),
     Text(
-      'Index 1: Open houses',
+      'Index 3: Inside Walkthrough',
       style: optionStyle,
     ),
-    AgentsScreen(),
-    AgentsDetails(),
   ];
 
   void _onItemTapped(int index) {
