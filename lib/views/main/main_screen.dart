@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/agents/agents_main_screen.dart';
-import 'package:real_estate_app/views/agents/agents_details.dart';
 import 'package:real_estate_app/views/open_houses/open_houses_main_screen.dart';
 import 'package:real_estate_app/views/properties/properties_main_screen.dart';
 
@@ -21,7 +20,7 @@ class _MainScreenState extends State<MainScreen> {
     OpenHousesScreen(),
     AgentsScreen(),
     Text(
-      'Index 3: Inside Walkthrough',
+      'Placeholder for profile screen',
       style: optionStyle,
     ),
   ];
