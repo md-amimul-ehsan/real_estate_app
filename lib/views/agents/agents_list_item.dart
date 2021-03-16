@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/models/agent.dart';
+import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/agents/agents_details.dart';
 
 class AgentsListItem extends StatefulWidget {
@@ -32,23 +33,26 @@ class _AgentsListItemState extends State<AgentsListItem> {
         ),
         elevation: 8,
         margin: EdgeInsets.symmetric(
-          horizontal: 10,
+          horizontal: kMainScreenPadding,
           vertical: 5,
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 15),
+          padding: EdgeInsets.symmetric(vertical: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.fromLTRB(18, 8, 8, 8),
                 child: CircleAvatar(
-                  radius: 30,
+                  radius: 40,
                   foregroundColor: Colors.black,
                   foregroundImage: NetworkImage(
                     widget.agent.img,
                   ),
                 ),
+              ),
+              SizedBox(
+                width: 10,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,15 +60,18 @@ class _AgentsListItemState extends State<AgentsListItem> {
                   Text(
                     widget.agent.name,
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20,
                     ),
+                  ),
+                  SizedBox(
+                    height: 5,
                   ),
                   Text(
                     widget.agent.title,
                     style: TextStyle(
                       color: Colors.grey,
-                      fontSize: 18,
+                      fontSize: 15,
                     ),
                   ),
                 ],
