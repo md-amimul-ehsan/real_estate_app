@@ -46,7 +46,6 @@ class _AgentsDetailsState extends State<AgentsDetails> {
                       opacity: 0.8,
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
                           image: DecorationImage(
                             image: NetworkImage(
                               widget.agent.img,

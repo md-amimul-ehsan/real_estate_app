@@ -49,7 +49,6 @@ class _OpenHousesDetailsState extends State<OpenHousesDetails> {
                       opacity: 0.5,
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
                           image: DecorationImage(
                             image: NetworkImage(
                               property.img.isNotEmpty
