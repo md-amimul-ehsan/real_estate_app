@@ -11,7 +11,7 @@ class PropertiesListItem extends StatefulWidget {
     @required this.property,
   }) : super(key: key);
 
-  Property property;
+  final Property property;
   @override
   _PropertiesListItemState createState() => _PropertiesListItemState();
 }

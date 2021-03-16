@@ -3,7 +3,6 @@ import 'package:real_estate_app/models/property.dart';
 import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/components/icon_text_horizontal.dart';
 import 'package:real_estate_app/views/components/icon_text_vertical.dart';
-import 'package:real_estate_app/views/properties/properties_main_screen.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:video_player/video_player.dart';
 
@@ -13,7 +12,7 @@ class PropertiesDetails extends StatefulWidget {
     @required this.property,
   }) : super(key: key);
 
-  Property property;
+  final Property property;
 
   @override
   _PropertiesDetailsState createState() => _PropertiesDetailsState();
@@ -77,7 +76,8 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     IconButton(
-                      icon: Icon(Icons.keyboard_arrow_left, color: Colors.white, size: 50),
+                      icon: Icon(Icons.keyboard_arrow_left,
+                          color: Colors.white, size: 50),
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
