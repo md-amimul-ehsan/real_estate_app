@@ -5,10 +5,12 @@ class TitleTextColumn extends StatelessWidget {
     Key key,
     @required this.title,
     @required this.text,
+    this.textColor = Colors.black,
   }) : super(key: key);
 
   final String title;
   final String text;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class TitleTextColumn extends StatelessWidget {
           Text(
             text,
             style: TextStyle(
-              color: Colors.black,
+              color: textColor,
               fontSize: 20,
             ),
           ),
