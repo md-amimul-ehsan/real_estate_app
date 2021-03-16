@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/models/openhouse.dart';
+import 'package:real_estate_app/utilities/common_functions.dart';
 import 'package:real_estate_app/utilities/constants.dart';
+import 'package:real_estate_app/views/agents/agents_details.dart';
+import 'package:real_estate_app/views/components/icon_text_horizontal.dart';
 import 'package:real_estate_app/views/components/title_text_column.dart';
+import 'package:real_estate_app/views/properties/properties_details.dart';
 
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
@@ -79,7 +83,7 @@ class _OpenHousesDetailsState extends State<OpenHousesDetails> {
                             right: kMainScreenPadding,
                           ),
                           child: Text(
-                            openhouse.date.toString().substring(0, 16),
+                            timestampToNeatTime(openhouse.date.toString()),
                             style: kCardLargeTextStyle,
                           ),
                         ),
@@ -112,16 +116,130 @@ class _OpenHousesDetailsState extends State<OpenHousesDetails> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Row(
-                      children: [
-                        Text(
-                          property.name,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                  Row(
+                    children: [
+                      Text(
+                        property.name,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      GestureDetector(
+                          child: IconTextHorizontal(
+                            title: "Tap to know more",
+                            icon: Icons.info,
+                            textColor: Colors.black,
+                            iconColor: kPrimaryAccentColor,
                           ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return PropertiesDetails(property: property);
+                            }),
+                          );
+                        },
+                      )
+                    ],
+                  ),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // Text(
+                  //   property.description.isNotEmpty
+                  //       ? property.description
+                  //       : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                  // ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Text(
+                    "Photos",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GridView.count(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    shrinkWrap: true,
+                    children: [
+                      for (var i in property.img)
+                        Container(
+                          height: 100,
+                          width: 100,
+                          child: Image.network(
+                            // "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg",
+                            i,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Text(
+                    "Contact agent",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return AgentsDetails(agent: property.agentId);
+                        }),
+                      );
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircleAvatar(
+                            radius: 30,
+                            foregroundColor: Colors.black,
+                            foregroundImage: NetworkImage(
+                              property.agentId.img.isNotEmpty
+                                  ? property.agentId.img
+                                  : "https://giantbomb1.cbsistatic.com/uploads/scale_medium/1/16944/2427349-426065_10151435086863987_724057164_n.jpg",
+                            ),
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              property.agentId.name,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              property.agentId.title,
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
                         ),
                         Spacer(),
                         IconButton(
@@ -136,27 +254,7 @@ class _OpenHousesDetailsState extends State<OpenHousesDetails> {
                         ),
                       ],
                     ),
-                  ),
-                  TitleTextColumn(
-                    title: 'Active',
-                    text: 'true',
-                  ),
-                  TitleTextColumn(
-                    title: 'Date',
-                    text: openhouse.date.toString().substring(0, 10),
-                  ),
-                  TitleTextColumn(
-                    title: 'Address',
-                    text: property.location,
-                  ),
-                  TitleTextColumn(
-                    title: 'Bedroom',
-                    text: property.bed.toString(),
-                  ),
-                  TitleTextColumn(
-                    title: 'Bathroom',
-                    text: property.bath.toString(),
-                  ),
+                  )
                 ],
               ),
             ),
