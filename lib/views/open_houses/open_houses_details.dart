@@ -228,7 +228,7 @@ class _OpenHousesDetailsState extends State<OpenHousesDetails> {
                             Text(
                               property.agentId.name,
                               style: TextStyle(
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
                             ),
@@ -245,12 +245,26 @@ class _OpenHousesDetailsState extends State<OpenHousesDetails> {
                         IconButton(
                           icon: Icon(Icons.phone),
                           color: kPrimaryAccentColor,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return AgentsDetails(agent: property.agentId);
+                              }),
+                            );
+                          },
                         ),
                         IconButton(
                           icon: Icon(Icons.email),
                           color: kPrimaryAccentColor,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return AgentsDetails(agent: property.agentId);
+                              }),
+                            );
+                          },
                         ),
                       ],
                     ),

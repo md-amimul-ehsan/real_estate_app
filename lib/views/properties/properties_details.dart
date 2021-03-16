@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/models/property.dart';
 import 'package:real_estate_app/utilities/constants.dart';
+import 'package:real_estate_app/views/agents/agents_details.dart';
 import 'package:real_estate_app/views/components/icon_text_horizontal.dart';
 import 'package:real_estate_app/views/components/icon_text_vertical.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -137,52 +138,76 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                          radius: 30,
-                          foregroundColor: Colors.black,
-                          foregroundImage: NetworkImage(
-                            agent.img.isNotEmpty
-                                ? agent.img
-                                : "https://giantbomb1.cbsistatic.com/uploads/scale_medium/1/16944/2427349-426065_10151435086863987_724057164_n.jpg",
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return AgentsDetails(agent: property.agentId);
+                        }),
+                      );
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircleAvatar(
+                            radius: 30,
+                            foregroundColor: Colors.black,
+                            foregroundImage: NetworkImage(
+                              agent.img.isNotEmpty
+                                  ? agent.img
+                                  : "https://giantbomb1.cbsistatic.com/uploads/scale_medium/1/16944/2427349-426065_10151435086863987_724057164_n.jpg",
+                            ),
                           ),
                         ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            agent.name,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              agent.name,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
                             ),
-                          ),
-                          Text(
-                            agent.title,
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.grey,
+                            Text(
+                              agent.title,
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.grey,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      IconButton(
-                        icon: Icon(Icons.phone),
-                        color: kPrimaryAccentColor,
-                        onPressed: () {},
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.email),
-                        color: kPrimaryAccentColor,
-                        onPressed: () {},
-                      ),
-                    ],
+                          ],
+                        ),
+                        Spacer(),
+                        IconButton(
+                          icon: Icon(Icons.phone),
+                          color: kPrimaryAccentColor,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return AgentsDetails(agent: property.agentId);
+                              }),
+                            );
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.email),
+                          color: kPrimaryAccentColor,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return AgentsDetails(agent: property.agentId);
+                              }),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 20,
@@ -245,6 +270,13 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                   ),
                   Text(
                     "Photos",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
                   ),
                   GridView.count(
                     crossAxisCount: 3,
@@ -269,6 +301,10 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                   ),
                   Text(
                     "Video",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
                   ),
                   SizedBox(
                     height: 30,
