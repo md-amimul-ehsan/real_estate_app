@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:real_estate_app/models/property.dart';
+import 'package:real_estate_app/models/openhouse.dart';
 import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/open_houses/open_houses_details.dart';
 import 'package:real_estate_app/views/components/icon_text_horizontal.dart';
+import 'package:real_estate_app/views/components/badge.dart';
 
 class OpenHousesListItem extends StatefulWidget {
   OpenHousesListItem({
     Key key,
-    @required this.property,
+    @required this.openhouse,
   }) : super(key: key);
 
-  final Property property;
+  final Openhouse openhouse;
   @override
   _OpenHousesListItemState createState() => _OpenHousesListItemState();
 }
@@ -19,12 +20,14 @@ class OpenHousesListItem extends StatefulWidget {
 class _OpenHousesListItemState extends State<OpenHousesListItem> {
   @override
   Widget build(BuildContext context) {
+    final openhouse = widget.openhouse;
+    final property = widget.openhouse.propertyId;
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) {
-            return OpenHousesDetails(property: widget.property);
+            return OpenHousesDetails(openhouse: widget.openhouse);
           }),
         );
       },
@@ -48,8 +51,9 @@ class _OpenHousesListItemState extends State<OpenHousesListItem> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                    image: NetworkImage(
-                        "https://www.realestatebd.com/images/pic8.jpg"),
+                    image: NetworkImage(property.img.isNotEmpty
+                        ? property.img.first
+                        : "https://www.realestatebd.com/images/pic8.jpg"),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -67,11 +71,11 @@ class _OpenHousesListItemState extends State<OpenHousesListItem> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Clinton Villa",
+                        property.name,
                         style: kCardLargeTextStyle,
                       ),
                       Text(
-                        "\$3,500.00",
+                        "\$${property.price}",
                         style: kCardLargeTextStyle,
                       ),
                     ],
@@ -86,28 +90,13 @@ class _OpenHousesListItemState extends State<OpenHousesListItem> {
                   child: Row(
                     children: [
                       IconTextHorizontal(
-                        title: 'Los Angeles',
+                        title: property.location,
                         icon: Icons.location_on_outlined,
                       ),
                       Spacer(),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 5.0,
-                            vertical: 3,
-                          ),
-                          child: Text(
-                            'CLOSED',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
+                      Badge(
+                        color: Colors.green,
+                        title: 'OPEN',
                       ),
                     ],
                   ),

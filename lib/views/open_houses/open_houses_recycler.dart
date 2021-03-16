@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate_app/models/property.dart';
+import 'package:real_estate_app/models/openhouse.dart';
 import 'package:real_estate_app/views/open_houses/open_houses_list_item.dart';
 
 class OpenHousesRecycler extends StatefulWidget {
-  OpenHousesRecycler({Key key, @required this.propertyList}) : super(key: key);
+  OpenHousesRecycler({Key key, @required this.openhouseList}) : super(key: key);
 
-  final List<Property> propertyList;
+  final List<Openhouse> openhouseList;
   @override
   _OpenHousesRecyclerState createState() => _OpenHousesRecyclerState();
 }
@@ -13,13 +13,13 @@ class OpenHousesRecycler extends StatefulWidget {
 class _OpenHousesRecyclerState extends State<OpenHousesRecycler> {
   @override
   Widget build(BuildContext context) {
-    List<Property> propertyList = widget.propertyList;
+    List<Openhouse> openhouseList = widget.openhouseList;
     return Expanded(
       child: ListView.builder(
         scrollDirection: Axis.vertical,
-        itemCount: propertyList.length,
+        itemCount: openhouseList.length,
         itemBuilder: (context, i) {
-          return OpenHousesListItem(property: propertyList[i]);
+          return OpenHousesListItem(openhouse: openhouseList[i]);
         },
       ),
     );

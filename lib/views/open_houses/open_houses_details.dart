@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:real_estate_app/models/property.dart';
+import 'package:real_estate_app/models/openhouse.dart';
 import 'package:real_estate_app/utilities/constants.dart';
-import 'package:real_estate_app/views/components/icon_text_horizontal.dart';
+import 'package:real_estate_app/views/components/title_text_column.dart';
+
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 const openHousesImageProportion = 0.4;
@@ -11,10 +12,10 @@ const openHousesPanelProportion = 0.6;
 class OpenHousesDetails extends StatefulWidget {
   OpenHousesDetails({
     Key key,
-    @required this.property,
+    @required this.openhouse,
   }) : super(key: key);
 
-  final Property property;
+  final Openhouse openhouse;
   @override
   _OpenHousesDetailsState createState() => _OpenHousesDetailsState();
 }
@@ -22,6 +23,8 @@ class OpenHousesDetails extends StatefulWidget {
 class _OpenHousesDetailsState extends State<OpenHousesDetails> {
   @override
   Widget build(BuildContext context) {
+    final openhouse = widget.openhouse;
+    final property = widget.openhouse.propertyId;
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
@@ -49,7 +52,9 @@ class _OpenHousesDetailsState extends State<OpenHousesDetails> {
                           borderRadius: BorderRadius.circular(20),
                           image: DecorationImage(
                             image: NetworkImage(
-                              "https://www.realestatebd.com/images/pic8.jpg",
+                              property.img.isNotEmpty
+                                  ? property.img.first
+                                  : "https://www.realestatebd.com/images/pic8.jpg",
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -66,8 +71,8 @@ class _OpenHousesDetailsState extends State<OpenHousesDetails> {
                             Navigator.of(context).pop();
                           },
                         ),
-                        Spacer(
-                          flex: 5,
+                        SizedBox(
+                          height: screenHeight * 0.2,
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
@@ -75,7 +80,7 @@ class _OpenHousesDetailsState extends State<OpenHousesDetails> {
                             right: kMainScreenPadding,
                           ),
                           child: Text(
-                            "Open house date - time",
+                            openhouse.date.toString().substring(0, 16),
                             style: kCardLargeTextStyle,
                           ),
                         ),
@@ -86,12 +91,9 @@ class _OpenHousesDetailsState extends State<OpenHousesDetails> {
                             bottom: 15.0,
                           ),
                           child: Text(
-                            'Open house address/details',
+                            property.location,
                             style: kWhiteTextStyle,
                           ),
-                        ),
-                        Spacer(
-                          flex: 1,
                         ),
                       ],
                     ),
@@ -116,7 +118,7 @@ class _OpenHousesDetailsState extends State<OpenHousesDetails> {
                     child: Row(
                       children: [
                         Text(
-                          "Property name",
+                          property.name,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -142,65 +144,25 @@ class _OpenHousesDetailsState extends State<OpenHousesDetails> {
                   ),
                   TitleTextColumn(
                     title: 'Date',
-                    text: 'button',
+                    text: openhouse.date.toString().substring(0, 10),
                   ),
                   TitleTextColumn(
                     title: 'Address',
-                    text: 'chat',
+                    text: property.location,
                   ),
                   TitleTextColumn(
                     title: 'Bedroom',
-                    text: '3',
+                    text: property.bed.toString(),
                   ),
                   TitleTextColumn(
                     title: 'Bathroom',
-                    text: '2',
+                    text: property.bath.toString(),
                   ),
                 ],
               ),
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class TitleTextColumn extends StatelessWidget {
-  const TitleTextColumn({
-    Key key,
-    @required this.title,
-    @required this.text,
-  }) : super(key: key);
-
-  final String title;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 10.0,
-        top: 20.0,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 20,
-            ),
-          ),
-          Text(
-            text,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-            ),
-          ),
-        ],
       ),
     );
   }

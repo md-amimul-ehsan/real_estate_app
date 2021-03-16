@@ -117,6 +117,7 @@ class _AgentsDetailsState extends State<AgentsDetails> {
                   TitleTextColumn(
                     title: 'Status',
                     text: widget.agent.active ? "Active" : "Inactive",
+                    textColor: widget.agent.active ? Colors.green : Colors.red,
                   ),
                   TitleTextColumn(
                     title: 'Email',

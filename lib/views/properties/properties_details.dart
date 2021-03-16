@@ -44,6 +44,8 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
   @override
   Widget build(BuildContext context) {
     final property = widget.property;
+    final photos = widget.property.img;
+    final agent = widget.property.agentId;
     return Scaffold(
       body: SafeArea(
         child: SlidingUpPanel(
@@ -66,7 +68,10 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: NetworkImage(
-                            "https://www.realestatebd.com/images/pic8.jpg"),
+                            // "https://www.realestatebd.com/images/pic8.jpg",
+                            property.img.isNotEmpty
+                                ? widget.property.img.first
+                                : "https://www.realestatebd.com/images/pic8.jpg"),
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -98,7 +103,7 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                             style: kCardLargeTextStyle,
                           ),
                           Text(
-                            "\$3,500.00",
+                            "\$${property.price}",
                             style: kCardLargeTextStyle,
                           ),
                         ],
@@ -113,14 +118,8 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                       child: Row(
                         children: [
                           IconTextHorizontal(
-                            title: 'Los Angeles',
+                            title: property.location,
                             icon: Icons.location_on_outlined,
-                          ),
-                          Spacer(),
-                          IconTextHorizontal(
-                            title: '4.4 Reviews',
-                            icon: Icons.star_rate,
-                            iconColor: Color(0xFFFDC125),
                           ),
                         ],
                       ),
@@ -141,24 +140,38 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      CircleAvatar(
-                        radius: 30,
-                        foregroundColor: Colors.black,
-                        foregroundImage: NetworkImage(
-                          "https://giantbomb1.cbsistatic.com/uploads/scale_medium/1/16944/2427349-426065_10151435086863987_724057164_n.jpg",
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CircleAvatar(
+                          radius: 30,
+                          foregroundColor: Colors.black,
+                          foregroundImage: NetworkImage(
+                            agent.img.isNotEmpty
+                                ? agent.img
+                                : "https://giantbomb1.cbsistatic.com/uploads/scale_medium/1/16944/2427349-426065_10151435086863987_724057164_n.jpg",
+                          ),
                         ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Agent name",
+                            agent.name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
                           ),
                           Text(
-                            "Agent description",
+                            agent.title,
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.grey,
+                            ),
                           ),
                         ],
                       ),
+                      Spacer(),
                       IconButton(
                         icon: Icon(Icons.phone),
                         color: kPrimaryAccentColor,
@@ -179,27 +192,27 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                     children: [
                       IconTextVertical(
                         icon: Icons.king_bed_outlined,
-                        color: kPrimaryAccentColor,
-                        text: "Bedrooms",
+                        iconColor: kPrimaryAccentColor,
+                        text: property.bed.toString(),
                       ),
                       IconTextVertical(
                         icon: Icons.bathtub_outlined,
-                        color: kPrimaryAccentColor,
-                        text: "Bathrooms",
+                        iconColor: kPrimaryAccentColor,
+                        text: property.bath.toString(),
                       ),
                       IconTextVertical(
                         icon: Icons.kitchen_outlined,
-                        color: kPrimaryAccentColor,
+                        iconColor: kPrimaryAccentColor,
                         text: "Kitchens",
                       ),
                       IconTextVertical(
                         icon: Icons.pool_outlined,
-                        color: kPrimaryAccentColor,
-                        text: "Pools",
+                        iconColor: kPrimaryAccentColor,
+                        text: property.pool.toString(),
                       ),
                       IconTextVertical(
                         icon: Icons.local_parking,
-                        color: kPrimaryAccentColor,
+                        iconColor: kPrimaryAccentColor,
                         text: "Parking",
                       ),
                     ],
@@ -209,12 +222,18 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                   ),
                   Text(
                     "Description",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                    property.description.isNotEmpty
+                        ? property.description
+                        : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                   ),
                   SizedBox(
                     height: 30,
@@ -228,38 +247,16 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                     mainAxisSpacing: 10,
                     shrinkWrap: true,
                     children: [
-                      Container(
-                        height: 100,
-                        width: 100,
-                        child: Image.network(
-                          "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg",
-                          fit: BoxFit.fill,
+                      for (var i in photos)
+                        Container(
+                          height: 100,
+                          width: 100,
+                          child: Image.network(
+                            // "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg",
+                            i,
+                            fit: BoxFit.fill,
+                          ),
                         ),
-                      ),
-                      Container(
-                        height: 100,
-                        width: 100,
-                        child: Image.network(
-                          "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg",
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      Container(
-                        height: 100,
-                        width: 100,
-                        child: Image.network(
-                          "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg",
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      Container(
-                        height: 100,
-                        width: 100,
-                        child: Image.network(
-                          "https://cdn.britannica.com/08/187508-050-D6FB5173/Shanghai-Tower-Gensler-San-Francisco-world-Oriental-2015.jpg",
-                          fit: BoxFit.fill,
-                        ),
-                      ),
                     ],
                   ),
                   SizedBox(

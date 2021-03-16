@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate_app/controllers/properties.dart';
-import 'package:real_estate_app/models/property.dart';
+import 'package:real_estate_app/controllers/openhouses.dart';
+import 'package:real_estate_app/models/openhouse.dart';
 import 'package:real_estate_app/views/open_houses/open_houses_recycler.dart';
 
 class OpenHousesScreen extends StatefulWidget {
@@ -13,9 +13,9 @@ class _OpenHousesScreenState extends State<OpenHousesScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: FutureBuilder(
-        future: getAllProperties(),
+        future: getAllOpenhouses(),
         builder:
-            (BuildContext context, AsyncSnapshot<List<Property>> snapshot) {
+            (BuildContext context, AsyncSnapshot<List<Openhouse>> snapshot) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -48,7 +48,7 @@ class _OpenHousesScreenState extends State<OpenHousesScreen> {
               ),
               SizedBox(height: 10),
               snapshot.data != null
-                  ? OpenHousesRecycler(propertyList: snapshot.data)
+                  ? OpenHousesRecycler(openhouseList: snapshot.data)
                   : Text("No open house found"),
             ],
           );
