@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate_app/controllers/properties.dart';
+import 'package:real_estate_app/controllers/agents.dart';
+import 'package:real_estate_app/models/agent.dart';
 import 'package:real_estate_app/models/property.dart';
 import 'package:real_estate_app/views/agents/agents_recycler.dart';
 
@@ -13,9 +14,9 @@ class _AgentsScreenState extends State<AgentsScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: FutureBuilder(
-        future: getAllProperties(),
+        future: getAllAgents(),
         builder:
-            (BuildContext context, AsyncSnapshot<List<Property>> snapshot) {
+            (BuildContext context, AsyncSnapshot<List<Agent>> snapshot) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -48,7 +49,7 @@ class _AgentsScreenState extends State<AgentsScreen> {
               ),
               SizedBox(height: 10),
               snapshot.data != null
-                  ? AgentsRecycler(propertyList: snapshot.data)
+                  ? AgentsRecycler(agentList: snapshot.data)
                   : Text("No agent found"),
             ],
           );

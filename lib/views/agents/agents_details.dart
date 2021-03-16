@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:real_estate_app/models/property.dart';
+import 'package:real_estate_app/models/agent.dart';
 import 'package:real_estate_app/utilities/constants.dart';
-import 'package:real_estate_app/views/components/icon_text_horizontal.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 const agentsImageProportion = 0.4;
@@ -11,10 +10,10 @@ const agentsPanelProportion = 0.6;
 class AgentsDetails extends StatefulWidget {
   AgentsDetails({
     Key key,
-    @required this.property,
+    @required this.agent,
   }) : super(key: key);
 
-  final Property property;
+  final Agent agent;
   @override
   _AgentsDetailsState createState() => _AgentsDetailsState();
 }
@@ -49,7 +48,7 @@ class _AgentsDetailsState extends State<AgentsDetails> {
                           borderRadius: BorderRadius.circular(20),
                           image: DecorationImage(
                             image: NetworkImage(
-                              "https://giantbomb1.cbsistatic.com/uploads/scale_medium/1/16944/2427349-426065_10151435086863987_724057164_n.jpg",
+                              widget.agent.img,
                             ),
                             fit: BoxFit.fill,
                           ),
@@ -90,7 +89,7 @@ class _AgentsDetailsState extends State<AgentsDetails> {
                     child: Row(
                       children: [
                         Text(
-                          "Agent name",
+                          widget.agent.name,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -111,20 +110,20 @@ class _AgentsDetailsState extends State<AgentsDetails> {
                     ),
                   ),
                   TitleTextColumn(
-                    title: 'Active',
-                    text: 'true',
+                    title: 'Title',
+                    text: widget.agent.title,
                   ),
                   TitleTextColumn(
-                    title: 'addbutton1',
-                    text: 'button',
+                    title: 'Status',
+                    text: widget.agent.active ? "Active" : "Inactive",
                   ),
                   TitleTextColumn(
-                    title: 'addbutton2',
-                    text: 'chat',
+                    title: 'Email',
+                    text: widget.agent.email,
                   ),
                   TitleTextColumn(
-                    title: 'contact',
-                    text: '123456789',
+                    title: 'Contact',
+                    text: widget.agent.phone,
                   ),
                 ],
               ),

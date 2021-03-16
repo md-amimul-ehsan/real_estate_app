@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:real_estate_app/models/property.dart';
+import 'package:real_estate_app/models/agent.dart';
 import 'package:real_estate_app/views/agents/agents_details.dart';
 
 class AgentsListItem extends StatefulWidget {
   AgentsListItem({
     Key key,
-    @required this.property,
+    @required this.agent,
   }) : super(key: key);
 
-  final Property property;
+  final Agent agent;
   @override
   _AgentsListItemState createState() => _AgentsListItemState();
 }
@@ -22,7 +22,7 @@ class _AgentsListItemState extends State<AgentsListItem> {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) {
-            return AgentsDetails(property: widget.property);
+            return AgentsDetails(agent: widget.agent);
           }),
         );
       },
@@ -46,7 +46,7 @@ class _AgentsListItemState extends State<AgentsListItem> {
                   radius: 30,
                   foregroundColor: Colors.black,
                   foregroundImage: NetworkImage(
-                    "https://giantbomb1.cbsistatic.com/uploads/scale_medium/1/16944/2427349-426065_10151435086863987_724057164_n.jpg",
+                    widget.agent.img,
                   ),
                 ),
               ),
@@ -57,14 +57,14 @@ class _AgentsListItemState extends State<AgentsListItem> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Agent name",
+                    widget.agent.name,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 25,
                     ),
                   ),
                   Text(
-                    "Agent description",
+                    widget.agent.title,
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 18,
