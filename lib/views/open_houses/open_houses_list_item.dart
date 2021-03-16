@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:real_estate_app/models/property.dart';
 import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/open_houses/open_houses_details.dart';
+import 'package:real_estate_app/views/components/icon_text_horizontal.dart';
 
 class OpenHousesListItem extends StatefulWidget {
   OpenHousesListItem({
@@ -27,53 +28,77 @@ class _OpenHousesListItemState extends State<OpenHousesListItem> {
           }),
         );
       },
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25),
+      child: Container(
+        margin: EdgeInsets.only(
+          left: kMainScreenPadding,
+          right: kMainScreenPadding,
+          bottom: 10,
+          top: 10,
         ),
-        elevation: 5,
-        margin: EdgeInsets.symmetric(
-          horizontal: 10,
-          vertical: 5,
+        height: 220,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.black,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        child: Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CircleAvatar(
-                radius: 30,
-                foregroundColor: Colors.black,
-                foregroundImage: NetworkImage(
-                  "https://www.realestatebd.com/images/pic8.jpg",
+            Opacity(
+              opacity: 0.5,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        "https://www.realestatebd.com/images/pic8.jpg"),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
-            SizedBox(
-              width: 5,
-            ),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Open house date - time",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                Spacer(),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: kMainScreenPadding,
+                    right: kMainScreenPadding,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Clinton Villa",
+                        style: kCardLargeTextStyle,
+                      ),
+                      Text(
+                        "\$3,500.00",
+                        style: kCardLargeTextStyle,
+                      ),
+                    ],
                   ),
                 ),
-                Text(
-                  "Open house address/details",
-                  style: TextStyle(
-                    color: Colors.grey,
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: kMainScreenPadding,
+                    right: kMainScreenPadding,
+                    bottom: 15.0,
+                  ),
+                  child: Row(
+                    children: [
+                      IconTextHorizontal(
+                        title: 'Los Angeles',
+                        icon: Icons.location_on_outlined,
+                      ),
+                      Spacer(),
+                      IconTextHorizontal(
+                        title: '4.4 Reviews',
+                        icon: Icons.star_rate,
+                        iconColor: Color(0xFFFDC125),
+                      ),
+                    ],
                   ),
                 ),
               ],
-            ),
-            Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: Icon(Icons.arrow_forward_ios),
             ),
           ],
         ),
@@ -81,38 +106,3 @@ class _OpenHousesListItemState extends State<OpenHousesListItem> {
     );
   }
 }
-// Padding(
-// padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-// child: Row(
-// mainAxisAlignment: MainAxisAlignment.spaceAround,
-// children: [
-// CircleAvatar(
-// radius: 30,
-// foregroundColor: Colors.black,
-// foregroundImage: NetworkImage(
-// "https://giantbomb1.cbsistatic.com/uploads/scale_medium/1/16944/2427349-426065_10151435086863987_724057164_n.jpg",
-// ),
-// ),
-// SizedBox(
-// width: 5,
-// ),
-// Column(
-// crossAxisAlignment: CrossAxisAlignment.start,
-// children: [
-// Text(
-// "Agent name",
-// ),
-// Text(
-// "Agent description",
-// ),
-// ],
-// ),
-// Spacer(),
-// IconButton(
-// icon: Icon(Icons.arrow_forward_ios),
-// color: kPrimaryAccentColor,
-// onPressed: () {},
-// ),
-// ],
-// ),
-// ),
