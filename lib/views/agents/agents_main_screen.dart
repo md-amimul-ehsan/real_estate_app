@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/controllers/properties.dart';
 import 'package:real_estate_app/models/property.dart';
-import 'package:real_estate_app/views/agents/agents_list_item.dart';
+import 'package:real_estate_app/views/agents/agents_recycler.dart';
 
 class AgentsScreen extends StatefulWidget {
   @override
@@ -46,21 +46,9 @@ class _AgentsScreenState extends State<AgentsScreen> {
                   ),
                 ],
               ),
-              SizedBox(
-                  height: 10
-              ),
-              snapshot.data != null // Replace with agents recycler
-                  ? Expanded(
-                    child: ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (context, i) {
-                          return agentsListItem(
-                            snapshot.data[i],
-                          );
-                        },
-                      ),
-                  )
+              SizedBox(height: 10),
+              snapshot.data != null
+                  ? AgentsRecycler(propertyList: snapshot.data)
                   : Text("No agent found"),
             ],
           );

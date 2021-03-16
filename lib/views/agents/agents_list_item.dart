@@ -2,14 +2,31 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/models/property.dart';
 import 'package:real_estate_app/utilities/constants.dart';
-import 'package:real_estate_app/views/components/icon_text_horizontal.dart';
-import 'package:real_estate_app/views/components/rounded_rectangle_border_button.dart';
+import 'package:real_estate_app/views/agents/agents_details.dart';
 
-Widget agentsListItem(
-  Property property,
-) {
-  return GestureDetector(
-      onTap: () {},
+class AgentsListItem extends StatefulWidget {
+  AgentsListItem({
+    Key key,
+    @required this.property,
+  }) : super(key: key);
+
+  final Property property;
+  @override
+  _AgentsListItemState createState() => _AgentsListItemState();
+}
+
+class _AgentsListItemState extends State<AgentsListItem> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) {
+            return AgentsDetails(property: widget.property);
+          }),
+        );
+      },
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25),
@@ -47,14 +64,15 @@ Widget agentsListItem(
               ],
             ),
             Spacer(),
-            IconButton(
-              icon: Icon(Icons.arrow_forward_ios),
-              color: kPrimaryAccentColor,
-              onPressed: () {},
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Icon(Icons.arrow_forward_ios),
             ),
           ],
         ),
-      ));
+      ),
+    );
+  }
 }
 // Padding(
 // padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
