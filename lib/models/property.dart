@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'agent.dart';
+
 Property propertyFromJson(String str) => Property.fromJson(json.decode(str));
 
 String propertyToJson(Property data) => json.encode(data.toJson());
@@ -23,6 +25,7 @@ class Property {
     this.type,
     this.location,
     this.price,
+    this.agentId,
   });
 
   String description;
@@ -38,6 +41,7 @@ class Property {
   String type;
   String location;
   int price;
+  Agent agentId;
 
   factory Property.fromJson(Map<String, dynamic> json) => Property(
     description: json["description"],
@@ -53,6 +57,7 @@ class Property {
     type: json["type"],
     location: json["location"],
     price: json["price"],
+    agentId: Agent.fromJson(json["agentId"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -69,5 +74,6 @@ class Property {
     "type": type,
     "location": location,
     "price": price,
+    "agentId": agentId.toJson(),
   };
 }

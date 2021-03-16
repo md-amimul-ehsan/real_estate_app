@@ -49,7 +49,9 @@ class _PropertiesListItemState extends State<PropertiesListItem> {
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
                     image: NetworkImage(
-                        "https://www.realestatebd.com/images/pic8.jpg"),
+                        // "https://www.realestatebd.com/images/pic8.jpg",
+                      widget.property.img.isNotEmpty ? widget.property.img.first : "https://www.realestatebd.com/images/pic8.jpg",
+                    ),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -67,11 +69,11 @@ class _PropertiesListItemState extends State<PropertiesListItem> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Clinton Villa",
+                        widget.property.name,
                         style: kCardLargeTextStyle,
                       ),
                       Text(
-                        "\$3,500.00",
+                        "\$${widget.property.price}",
                         style: kCardLargeTextStyle,
                       ),
                     ],
@@ -86,15 +88,15 @@ class _PropertiesListItemState extends State<PropertiesListItem> {
                   child: Row(
                     children: [
                       IconTextHorizontal(
-                        title: 'Los Angeles',
+                        title: widget.property.location,
                         icon: Icons.location_on_outlined,
                       ),
                       Spacer(),
-                      IconTextHorizontal(
-                        title: '4.4 Reviews',
-                        icon: Icons.star_rate,
-                        iconColor: Color(0xFFFDC125),
-                      ),
+                      // IconTextHorizontal(
+                      //   title: '4.4 Reviews',
+                      //   icon: Icons.star_rate,
+                      //   iconColor: Color(0xFFFDC125),
+                      // ),
                     ],
                   ),
                 ),
