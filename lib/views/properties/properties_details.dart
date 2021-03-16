@@ -26,7 +26,7 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
     // TODO: implement initState
     super.initState();
     _controller = VideoPlayerController.network(
-        'https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
+        widget.property.video.isNotEmpty ? widget.property.video : 'https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
     _controller.addListener(() {
       setState(() {});
     });
@@ -205,7 +205,7 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                       IconTextVertical(
                         icon: Icons.kitchen_outlined,
                         iconColor: kPrimaryAccentColor,
-                        text: "0",
+                        text: property.kitchen.toString(),
                         titleText: "Kitchen",
                       ),
                       IconTextVertical(
@@ -217,7 +217,7 @@ class _PropertiesDetailsState extends State<PropertiesDetails> {
                       IconTextVertical(
                         icon: Icons.local_parking,
                         iconColor: kPrimaryAccentColor,
-                        text: "0",
+                        text: property.parking.toString(),
                         titleText: "Parking",
                       ),
                     ],
