@@ -16,6 +16,8 @@ class Property {
     this.bed,
     this.bath,
     this.pool,
+    this.parking,
+    this.kitchen,
     this.img,
     this.status,
     this.video,
@@ -32,6 +34,8 @@ class Property {
   int bed;
   int bath;
   int pool;
+  int parking;
+  int kitchen;
   List<dynamic> img;
   int status;
   String video;
@@ -48,6 +52,8 @@ class Property {
     bed: json["bed"],
     bath: json["bath"],
     pool: json["pool"],
+    parking: json["parking"],
+    kitchen: json["kitchen"],
     img: List<dynamic>.from(json["img"].map((x) => x)),
     status: json["status"],
     video: json["video"],
@@ -65,6 +71,8 @@ class Property {
     "bed": bed,
     "bath": bath,
     "pool": pool,
+    "parking": parking,
+    "kitchen": kitchen,
     "img": List<dynamic>.from(img.map((x) => x)),
     "status": status,
     "video": video,
