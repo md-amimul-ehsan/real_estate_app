@@ -58,3 +58,14 @@ void showSnackbar(dynamic icon, String message, dynamic color, BuildContext cont
       backgroundColor: color);
   ScaffoldMessenger.of(context).showSnackBar(mySnackbar);
 }
+
+Future<List<String>> getLoginCredentials() async {
+  try {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String uid = prefs.getString("UID");
+    String jwt = prefs.getString("JWT");
+    return [uid, jwt];
+  } catch (e) {
+    print("Error getting login credentials");
+  }
+}
