@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:real_estate_app/utilities/common_functions.dart';
 import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/components/radio_button.dart';
 import 'package:real_estate_app/views/components/rounded_rectangle_border_button.dart';
@@ -12,6 +13,7 @@ class LandingScreen extends StatefulWidget {
 }
 
 class _LandingScreenState extends State<LandingScreen> {
+  UserType userType;
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -25,7 +27,7 @@ class _LandingScreenState extends State<LandingScreen> {
             height: screenHeight * 0.35,
           ),
           Text(
-            'Hello, Stranger.',
+            'Hello!',
             style: kTitleTextStyle,
             textAlign: TextAlign.center,
           ),
@@ -33,14 +35,20 @@ class _LandingScreenState extends State<LandingScreen> {
             height: screenHeight * 0.025,
           ),
           Text(
-            'Please tell us how you want to register',
+            'Please tell us how you want to use this app.',
             style: kSubtitleTextStyle,
             textAlign: TextAlign.center,
           ),
           SizedBox(
             height: screenHeight * 0.05,
           ),
-          RadioButton(),
+          RadioButton(
+            callback: (_userType) {
+              setState(() {
+                userType = _userType;
+              });
+            },
+          ),
           SizedBox(
             height: screenHeight * 0.1,
           ),
@@ -52,12 +60,21 @@ class _LandingScreenState extends State<LandingScreen> {
                 title: 'Sign In',
                 width: screenWidth * 0.3,
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return SignInScreen();
-                    }),
-                  );
+                  if (userType == null) {
+                    showSnackbar(Icons.info, "Please select a user type",
+                        Colors.redAccent, context);
+                  } else if ( userType == UserType.User ) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return SignInScreen(
+                          userType: userType,
+                        );
+                      }),
+                    );
+                  } else {
+                    showSnackbar(Icons.info, "Agent functionality not finished yet.", Colors.redAccent, context);
+                  }
                 },
               ),
               RoundedRectangleBorderButton(
@@ -65,12 +82,21 @@ class _LandingScreenState extends State<LandingScreen> {
                 width: screenWidth * 0.3,
                 title: 'Sign Up',
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return SignUpScreen();
-                    }),
-                  );
+                  if (userType == null) {
+                    showSnackbar(Icons.info, "Please select a user type",
+                        Colors.redAccent, context);
+                  } else if ( userType == UserType.User ) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return SignUpScreen(
+                          userType: userType,
+                        );
+                      }),
+                    );
+                  } else {
+                    showSnackbar(Icons.info, "Agent functionality not finished yet.", Colors.redAccent, context);
+                  }
                 },
               ),
             ],
