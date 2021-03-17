@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/utilities/common_functions.dart';
 import 'package:real_estate_app/views/auth/landing_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileMainScreen extends StatefulWidget {
   @override
@@ -18,7 +17,6 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
           children: [
             Text("PLACEHOLDER FOR PROFILE SCREEN"),
             ElevatedButton(onPressed: () async {
-              print("BUTTON PRESSED");
               await removeLoginDetails();
               Navigator.pop(context);
               Navigator.push(

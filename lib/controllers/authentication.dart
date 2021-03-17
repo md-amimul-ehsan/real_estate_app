@@ -11,7 +11,6 @@ Future<User> loginUser(String email, String pass) async {
   User user;
   try{
     String reqBody = jsonEncode({"email": email, "pass": pass});
-    print(reqBody);
     final response = await http.post(Uri.parse(baseURLProp + "login/user"),
         headers: <String, String>
         {
