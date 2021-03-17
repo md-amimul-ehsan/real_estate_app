@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/utilities/constants.dart';
 
-enum UserType { Agent, User }
-
 class RadioButton extends StatefulWidget {
+
+  RadioButton({Key key, this.callback,}) : super(key: key);
+
+  Function callback;
   @override
   _RadioButtonState createState() => _RadioButtonState();
 }
 
 class _RadioButtonState extends State<RadioButton> {
-  UserType _userType = UserType.Agent;
+  UserType _userType;
 
   Expanded radioItem({String title, UserType userType}) {
     return Expanded(
@@ -24,7 +26,8 @@ class _RadioButtonState extends State<RadioButton> {
           groupValue: _userType,
           onChanged: (UserType value) {
             setState(() {
-              _userType = userType;
+              _userType = value;
+              widget.callback(_userType);
             });
           },
         ),
