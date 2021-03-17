@@ -22,3 +22,4 @@ const kCardLargeTextStyle = TextStyle(
 const kButtonBackgroundColor = Color(0xFF69AFA3);
 const kMainScreenPadding = 20.0;
 const baseURL = "https://real-estate-ar-app.herokuapp.com/";
+enum UserType { Agent, User }
