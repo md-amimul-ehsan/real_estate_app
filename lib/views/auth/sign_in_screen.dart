@@ -21,9 +21,9 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  String email, pass;
   @override
   Widget build(BuildContext context) {
-    String email, pass;
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -51,7 +51,9 @@ class _SignInScreenState extends State<SignInScreen> {
               textInputType: TextInputType.emailAddress,
               title: 'Email',
               callback: (text) {
-                email = text;
+                setState(() {
+                  email = text;
+                });
               },
               prefixIcon: Icon(
                 Icons.mail,
@@ -61,7 +63,9 @@ class _SignInScreenState extends State<SignInScreen> {
             PasswordTextField(
               title: 'Password',
               callback: (text) {
-                pass = text;
+                setState(() {
+                  pass = text;
+                });
               },
             ),
             SizedBox(

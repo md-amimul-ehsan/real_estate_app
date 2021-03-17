@@ -9,8 +9,10 @@ import 'package:real_estate_app/views/components/password_text_field.dart';
 import 'package:real_estate_app/views/main/main_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
-
-  SignUpScreen({Key key, this.userType,}) : super (key: key);
+  SignUpScreen({
+    Key key,
+    this.userType,
+  }) : super(key: key);
 
   UserType userType;
   @override
@@ -18,10 +20,10 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  String email, pass, name;
   @override
   Widget build(BuildContext context) {
     // bool isLoading = false;
-    String email, pass, name;
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -49,7 +51,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               title: 'Name',
               textInputType: TextInputType.name,
               callback: (text) {
-                name = text;
+                setState(() {
+                  name = text;
+                });
               },
               prefixIcon: Icon(
                 Icons.account_circle,
@@ -60,7 +64,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               textInputType: TextInputType.emailAddress,
               title: 'Email',
               callback: (text) {
-                email = text;
+                setState(() {
+                  email = text;
+                });
               },
               prefixIcon: Icon(
                 Icons.mail,
@@ -70,7 +76,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
             PasswordTextField(
               title: 'Password',
               callback: (text) {
-                pass = text;
+                setState(() {
+                  pass = text;
+                });
               },
             ),
             SizedBox(
