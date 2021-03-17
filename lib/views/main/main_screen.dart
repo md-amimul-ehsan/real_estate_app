@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/agents/agents_main_screen.dart';
 import 'package:real_estate_app/views/open_houses/open_houses_main_screen.dart';
+import 'package:real_estate_app/views/profile/profile_main_screen.dart';
 import 'package:real_estate_app/views/properties/properties_main_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -19,10 +20,7 @@ class _MainScreenState extends State<MainScreen> {
     PropertiesScreen(),
     OpenHousesScreen(),
     AgentsScreen(),
-    Text(
-      'Placeholder for profile screen',
-      style: optionStyle,
-    ),
+    ProfileMainScreen(),
   ];
 
   void _onItemTapped(int index) {
