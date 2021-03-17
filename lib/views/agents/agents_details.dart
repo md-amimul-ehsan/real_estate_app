@@ -5,9 +5,6 @@ import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/components/title_text_column.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-const agentsImageProportion = 0.4;
-const agentsPanelProportion = 0.6;
-
 class AgentsDetails extends StatefulWidget {
   AgentsDetails({
     Key key,
@@ -26,7 +23,7 @@ class _AgentsDetailsState extends State<AgentsDetails> {
     return Scaffold(
       body: SafeArea(
         child: SlidingUpPanel(
-          maxHeight: screenHeight * agentsPanelProportion,
+          maxHeight: screenHeight * personPanelProportion,
           boxShadow: [BoxShadow(blurRadius: 0)],
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(30),
@@ -36,7 +33,7 @@ class _AgentsDetailsState extends State<AgentsDetails> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                height: screenHeight * agentsImageProportion,
+                height: screenHeight * personImageProportion,
                 decoration: BoxDecoration(
                   color: Colors.black,
                 ),
