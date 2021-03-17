@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/controllers/agents.dart';
 import 'package:real_estate_app/models/agent.dart';
-import 'package:real_estate_app/models/property.dart';
 import 'package:real_estate_app/views/agents/agents_recycler.dart';
 
 class AgentsScreen extends StatefulWidget {

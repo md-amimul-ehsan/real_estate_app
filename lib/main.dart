@@ -13,7 +13,7 @@ class RealEstateApp extends StatefulWidget {
   RealEstateApp({this.loginFlag, Key key}) : super(key: key);
 
   static const String _title = 'Flutter Code Sample';
-  bool loginFlag;
+  final bool loginFlag;
   @override
   _RealEstateAppState createState() => _RealEstateAppState();
 }

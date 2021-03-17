@@ -14,7 +14,7 @@ class SignUpScreen extends StatefulWidget {
     this.userType,
   }) : super(key: key);
 
-  UserType userType;
+  final UserType userType;
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }

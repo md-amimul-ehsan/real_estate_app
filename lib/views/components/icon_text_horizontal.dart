@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate_app/utilities/constants.dart';
 
 class IconTextHorizontal extends StatelessWidget {
   const IconTextHorizontal({

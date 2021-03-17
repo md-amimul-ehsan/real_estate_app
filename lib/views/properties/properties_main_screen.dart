@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/controllers/properties.dart';
 import 'package:real_estate_app/models/property.dart';
-import 'package:real_estate_app/views/properties/properties_details.dart';
 import 'package:real_estate_app/views/properties/properties_recycler.dart';
 
 class PropertiesScreen extends StatefulWidget {

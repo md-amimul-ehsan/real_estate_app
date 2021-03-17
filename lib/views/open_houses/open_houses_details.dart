@@ -5,7 +5,6 @@ import 'package:real_estate_app/utilities/common_functions.dart';
 import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/agents/agents_details.dart';
 import 'package:real_estate_app/views/components/icon_text_horizontal.dart';
-import 'package:real_estate_app/views/components/title_text_column.dart';
 import 'package:real_estate_app/views/properties/properties_details.dart';
 
 import 'package:sliding_up_panel/sliding_up_panel.dart';

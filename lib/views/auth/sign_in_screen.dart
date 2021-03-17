@@ -14,7 +14,7 @@ class SignInScreen extends StatefulWidget {
     this.userType,
   }) : super(key: key);
 
-  UserType userType;
+  final UserType userType;
 
   @override
   _SignInScreenState createState() => _SignInScreenState();

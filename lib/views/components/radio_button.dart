@@ -5,7 +5,7 @@ class RadioButton extends StatefulWidget {
 
   RadioButton({Key key, this.callback,}) : super(key: key);
 
-  Function callback;
+  final Function callback;
   @override
   _RadioButtonState createState() => _RadioButtonState();
 }
