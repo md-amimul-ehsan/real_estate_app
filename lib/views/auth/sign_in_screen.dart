@@ -22,6 +22,7 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   String email, pass;
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -74,6 +75,9 @@ class _SignInScreenState extends State<SignInScreen> {
             RoundedRectangleBorderButton(
               onPressed: () async {
                 try {
+                  setState(() {
+                    isLoading = true;
+                  });
                   if (widget.userType == UserType.User) {
                     User user = await loginUser(email, pass);
                     if (user != null) {
@@ -84,6 +88,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         }),
                       );
                     } else {
+                      setState(() {
+                        isLoading = false;
+                      });
                       showSnackbar(
                         Icons.info,
                         "Unable to sign in. Please try again.",
@@ -92,6 +99,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       );
                     }
                   } else {
+                    setState(() {
+                      isLoading = false;
+                    });
                     //agent thing
                     showSnackbar(
                       Icons.info,
@@ -101,6 +111,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     );
                   }
                 } catch (e) {
+                  setState(() {
+                    isLoading = false;
+                  });
                   showSnackbar(
                     Icons.info,
                     e.toString(),
@@ -112,6 +125,14 @@ class _SignInScreenState extends State<SignInScreen> {
               screenWidth: screenWidth,
               title: 'Sign In',
               width: screenWidth * 0.3,
+            ),
+            !isLoading ? Container() : Padding(
+              padding: EdgeInsets.fromLTRB(150, 50, 150, 50),
+              child: Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+              ),
             ),
           ],
         ),

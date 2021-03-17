@@ -21,9 +21,9 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   String email, pass, name;
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
-    // bool isLoading = false;
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -87,9 +87,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
             RoundedRectangleBorderButton(
               onPressed: () async {
                 try {
-                  // setState(() {
-                  //   isLoading = true;
-                  // });
+                  setState(() {
+                    isLoading = true;
+                  });
                   if (widget.userType == UserType.User) {
                     User user = await registerUser(name, email, pass);
                     if (user != null) {
@@ -100,9 +100,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         }),
                       );
                     } else {
-                      // setState(() {
-                      //   isLoading = false;
-                      // });
+                      setState(() {
+                        isLoading = false;
+                      });
                       showSnackbar(
                         Icons.info,
                         "Unable to sign in. Please try again.",
@@ -111,9 +111,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       );
                     }
                   } else {
-                    // setState(() {
-                    //   isLoading = false;
-                    // });
+                    setState(() {
+                      isLoading = false;
+                    });
                     //agent thing
                     showSnackbar(
                       Icons.info,
@@ -123,9 +123,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     );
                   }
                 } catch (e) {
-                  // setState(() {
-                  //   isLoading = false;
-                  // });
+                  setState(() {
+                    isLoading = false;
+                  });
                   showSnackbar(
                     Icons.info,
                     e.toString(),
@@ -138,14 +138,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
               title: 'Sign Up',
               width: screenWidth * 0.3,
             ),
-            // !isLoading ? Container() : Padding(
-            //   padding: EdgeInsets.fromLTRB(150, 50, 150, 50),
-            //   child: Center(
-            //     child: CircularProgressIndicator(
-            //       valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-            //     ),
-            //   ),
-            // ),
+            !isLoading ? Container() : Padding(
+              padding: EdgeInsets.fromLTRB(150, 50, 150, 50),
+              child: Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+              ),
+            ),
           ],
         ),
       ),
