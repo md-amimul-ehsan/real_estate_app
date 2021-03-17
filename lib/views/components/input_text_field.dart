@@ -8,12 +8,14 @@ class InputTextField extends StatefulWidget {
     this.textInputType,
     this.prefixIcon,
     this.suffixIcon,
+    this.callback,
   }) : super(key: key);
 
   final String title;
   final TextInputType textInputType;
   final Icon prefixIcon;
   final Icon suffixIcon;
+  final Function callback;
 
   @override
   _InputTextFieldState createState() => _InputTextFieldState();
@@ -25,7 +27,9 @@ class _InputTextFieldState extends State<InputTextField> {
   @override
   void initState() {
     super.initState();
-    textController.addListener(() => setState(() {}));
+    textController.addListener(() => setState(() {
+      widget.callback(textController.text);
+    }));
   }
 
   @override

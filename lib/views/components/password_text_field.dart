@@ -5,9 +5,11 @@ class PasswordTextField extends StatefulWidget {
   const PasswordTextField({
     Key key,
     @required this.title,
+    this.callback,
   }) : super(key: key);
 
   final String title;
+  final Function callback;
 
   @override
   _PasswordTextFieldState createState() => _PasswordTextFieldState();
@@ -20,7 +22,9 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
   @override
   void initState() {
     super.initState();
-    textController.addListener(() => setState(() {}));
+    textController.addListener(() => setState(() {
+      widget.callback(textController.text);
+    }));
   }
 
   @override
