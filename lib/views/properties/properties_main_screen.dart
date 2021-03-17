@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/controllers/properties.dart';
 import 'package:real_estate_app/models/property.dart';
+import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/properties/properties_recycler.dart';
 
 class PropertiesScreen extends StatefulWidget {
@@ -47,7 +48,7 @@ class _PropertiesScreenState extends State<PropertiesScreen> {
               SizedBox(
                   height: 10
               ),
-              snapshot.data != null ? PropertiesRecycler(propertyList: snapshot.data) : Text("No property found") //Replace with spinner
+              snapshot.data != null ? PropertiesRecycler(propertyList: snapshot.data) : Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(kPrimaryAccentColor),)) //Replace with spinner
             ],
           );
         },

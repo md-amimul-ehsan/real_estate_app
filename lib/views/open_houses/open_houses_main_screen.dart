@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/controllers/openhouses.dart';
 import 'package:real_estate_app/models/openhouse.dart';
+import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/open_houses/open_houses_recycler.dart';
 
 class OpenHousesScreen extends StatefulWidget {
@@ -49,7 +50,7 @@ class _OpenHousesScreenState extends State<OpenHousesScreen> {
               SizedBox(height: 10),
               snapshot.data != null
                   ? OpenHousesRecycler(openhouseList: snapshot.data)
-                  : Text("No open house found"),
+                  : Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(kPrimaryAccentColor),))
             ],
           );
         },

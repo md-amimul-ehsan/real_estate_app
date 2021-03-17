@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_app/controllers/agents.dart';
 import 'package:real_estate_app/models/agent.dart';
+import 'package:real_estate_app/utilities/constants.dart';
 import 'package:real_estate_app/views/agents/agents_recycler.dart';
 
 class AgentsScreen extends StatefulWidget {
@@ -49,7 +50,7 @@ class _AgentsScreenState extends State<AgentsScreen> {
               SizedBox(height: 10),
               snapshot.data != null
                   ? AgentsRecycler(agentList: snapshot.data)
-                  : Text("No agent found"),
+                  : Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(kPrimaryAccentColor),)),
             ],
           );
         },
